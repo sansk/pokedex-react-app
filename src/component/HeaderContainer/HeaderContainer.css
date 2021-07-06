@@ -1,0 +1,10 @@
+header {
+  font-family: var(--heading-font);
+  text-align: center;
+  font-size: 2rem;
+  padding: 25px;
+  background-color: #30D5C8;
+  background-image: linear-gradient(to top, #30D5C8 50%, #01baef);
+
+  color: #000;
+}
