@@ -10,8 +10,11 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      pokemons: []
-    }
+      pokemons: [],
+      searchField: ''
+    };
+
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   };
 
   componentDidMount() {
@@ -20,13 +23,20 @@ class App extends React.Component {
       .then(pokemon => this.setState({ pokemons: pokemon.results }))
   };
 
+  handleSearchChange(val) {
+    this.setState({searchField: val});
+  };
+
   render() {
+    const { pokemons, searchField } = this.state;
+    const filteredPokes = pokemons.filter(pokes => pokes.name.toLowerCase().includes(searchField.toLowerCase()));
+
     return (
       <div>
         <HeaderContainer />
         <main>
-          <SearchContainer placeholder={'Search Pokemon'}/>
-          <CardContainer pokes={this.state.pokemons} />
+          <SearchContainer pokes={this.state.pokemons} searchFieldChange={this.handleSearchChange}/>
+          <CardContainer pokes={filteredPokes} />
         </main>
       </div>
     );

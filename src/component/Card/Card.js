@@ -22,15 +22,18 @@ class Card extends React.Component {
     hideModal = () => {
         this.setState({ show: false });
     };
-
+    
     render() {
+
+        const urlId = this.props.poke.url.match(/([^/]*)\/*$/)[1];
+
         return (
             <>
                 <div key={this.props.pokeId} className="card">
-                    <PokeDetailsModal show={this.state.show} handleClose={this.hideModal} url={this.props.poke.url}/>
+                    <PokeDetailsModal show={this.state.show} handleClose={this.hideModal} url={this.props.poke.url} />
                     <div onClick={this.showModal}>
                         <img src={`https://pokeres.bastionbot.org/images/pokemon/${this.props.pokeId}.png`} alt={this.props.poke.name} />
-                        <h3>#{this.props.pokeId} {this.props.poke.name}</h3>
+                        <h3>#{urlId} {this.props.poke.name}</h3>
                     </div>
                 </div>
             </>
