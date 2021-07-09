@@ -8,7 +8,7 @@ const CardContainer = (props) => {
         <div className="cardContainer">
             {
                 props.pokes.map((poke, i) => (
-                        <Card key={i + 1} poke={poke} pokeId={i + 1} />
+                    <Card key={i + 1} poke={poke} pokeId={i + 1} />
                 ))
             }
         </div>
